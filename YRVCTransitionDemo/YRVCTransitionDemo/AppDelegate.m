@@ -20,6 +20,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     DemoViewController *vc = [[DemoViewController alloc]initWithNibName:@"DemoViewController" bundle:nil];
+    [vc.navigationItem setTitle:@"主页"];
     UINavigationController *nv = [[UINavigationController alloc]initWithRootViewController:vc];
     self.window.rootViewController = nv;
     

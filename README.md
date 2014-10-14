@@ -43,9 +43,10 @@ Help to use the viewController transition iOS7 later
 	}
 这样之后，可以使用标准的push方法，或者使用正常的presentModelViewController，都可以正常触发动画。
 
-另外，如果启用了返回手势，各个view可以
+另外，如果启用了返回手势，各个view可以通过设置方向的滑动返回前一界面。
 
 
-具体的效果可以参考demo，增加其他动画效果也比较简单。
+具体的效果可以参考demo，增加其他动画效果也比较简单。下面是效果图。
 
+&nbsp;&nbsp;&nbsp;&nbsp;![效果图](./YRVCTransition动画图.gif "动画")
 	
