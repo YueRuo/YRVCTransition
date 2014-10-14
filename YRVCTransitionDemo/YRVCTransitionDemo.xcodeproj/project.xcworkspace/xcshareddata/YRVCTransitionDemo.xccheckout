@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>25AED904-3C52-4191-8DC1-3DE8070B8CD5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>YRVCTransitionDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E63D3D1F-A29B-4E6B-B158-2E3A54124310</key>
+		<string>ssh://github.com/YueRuo/YRVCTransition.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>YRVCTransitionDemo/YRVCTransitionDemo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E63D3D1F-A29B-4E6B-B158-2E3A54124310</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/YueRuo/YRVCTransition.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E63D3D1F-A29B-4E6B-B158-2E3A54124310</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E63D3D1F-A29B-4E6B-B158-2E3A54124310</string>
+			<key>IDESourceControlWCCName</key>
+			<string>YRVCTransition</string>
+		</dict>
+	</array>
+</dict>
+</plist>
