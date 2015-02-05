@@ -9,9 +9,12 @@
 #import "YRPercentDrivenInteractiveTransition.h"
 #import "UIViewController+YRVCTransition.h"
 
+#define YRVC_TRANSITION_TOTAL_DISTANCE 300.0
+
 @interface YRPercentDrivenInteractiveTransition ()
 @property (retain,nonatomic) UIPanGestureRecognizer *gesture;
 @property (weak,nonatomic) UIViewController *viewController;
+@property (weak,nonatomic) UIViewController *transitionSourceVC;//动画所在的VC
 @property (assign,nonatomic) YRTransitonStyle style;
 
 
@@ -27,8 +30,9 @@
 -(void)dealloc{
     [_gesture.view removeGestureRecognizer:_gesture];
 }
--(void)addTransitionToViewController:(UIViewController *)viewController style:(YRTransitonStyle)style{
+-(void)addTransitionToViewController:(UIViewController *)viewController transitionSourceVC:(UIViewController *)sourceVC style:(YRTransitonStyle)style{
     _viewController = viewController;
+    _transitionSourceVC = sourceVC;
     _style = style;
     [self setEnable:viewController.enableBackGesture];
 }
@@ -41,10 +45,8 @@
                 case YRTransitonStyle_Navi:
                     [_viewController.navigationController.view addGestureRecognizer:self.gesture];
                     break;
-                case YRTransitonStyle_Model:
-                    [_viewController.view addGestureRecognizer:self.gesture];
-                    break;
                 default:
+                    [_viewController.view addGestureRecognizer:self.gesture];
                     break;
             }
         }
@@ -107,11 +109,11 @@
                 switch (self.swipeDir) {
                     case YRVCTransitionSwipeDir_Left2Right:
                     case YRVCTransitionSwipeDir_Right2Left:{
-                        fraction = fabsf(translation.x/200.0);
+                        fraction = fabsf(translation.x/YRVC_TRANSITION_TOTAL_DISTANCE);
                         break;}
                     case YRVCTransitionSwipeDir_Top2Bottom:
                     case YRVCTransitionSwipeDir_Bottom2Top:{
-                        fraction = fabsf(translation.y/200.0);
+                        fraction = fabsf(translation.y/YRVC_TRANSITION_TOTAL_DISTANCE);
                         break;}
                     default:
                         break;
@@ -127,8 +129,10 @@
         case UIGestureRecognizerStateEnded:{
             if (self.inProgress) {
                 self.inProgress = false;
-                if (self.percentComplete<0.5|| gesture.state == UIGestureRecognizerStateCancelled) {
+                if (self.percentComplete<0.4|| gesture.state == UIGestureRecognizerStateCancelled) {
                     [self cancelInteractiveTransition];
+                    //由于回退，动画反转也要转换回来
+                    _transitionSourceVC.transition.reverse = !_transitionSourceVC.transition.reverse;
                 }else{
                     [self finishInteractiveTransition];
                 }

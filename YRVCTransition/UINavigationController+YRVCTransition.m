@@ -18,13 +18,12 @@ static const char *assoKeyDelegate = "assoKeyDelegate";
 @end
 @implementation YRNavigationControllerTransitionDelegate
 -(id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
-    [navigationController.interactiveYRTransition addTransitionToViewController:toVC style:YRTransitonStyle_Navi];
+    [navigationController.interactiveYRTransition addTransitionToViewController:toVC transitionSourceVC:fromVC style:YRTransitonStyle_Navi];
     switch (operation) {
         case UINavigationControllerOperationPush:
-            toVC.transition.reverse = operation==UINavigationControllerOperationPop;
             return toVC.transition;
         case UINavigationControllerOperationPop:
-            fromVC.transition.reverse = operation==UINavigationControllerOperationPop;
+            fromVC.transition.reverse = !fromVC.transition.reverse;
             return fromVC.transition;
         default:
             break;

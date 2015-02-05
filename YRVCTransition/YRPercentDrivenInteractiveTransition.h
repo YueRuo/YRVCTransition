@@ -29,6 +29,6 @@ typedef NS_ENUM(NSUInteger, YRVCTransitionSwipeDir) {
 @property (assign,nonatomic) YRVCTransitionSwipeDir swipeDir;
 @property (assign,nonatomic) BOOL enable;
 
--(void)addTransitionToViewController:(UIViewController*)viewController style:(YRTransitonStyle)style;
+-(void)addTransitionToViewController:(UIViewController*)viewController transitionSourceVC:(UIViewController*)sourceVC style:(YRTransitonStyle)style;
 
 @end
