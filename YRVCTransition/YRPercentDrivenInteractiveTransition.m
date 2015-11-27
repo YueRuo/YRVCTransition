@@ -109,11 +109,11 @@
                 switch (self.swipeDir) {
                     case YRVCTransitionSwipeDir_Left2Right:
                     case YRVCTransitionSwipeDir_Right2Left:{
-                        fraction = fabsf(translation.x/YRVC_TRANSITION_TOTAL_DISTANCE);
+                        fraction = fabs(translation.x/YRVC_TRANSITION_TOTAL_DISTANCE);
                         break;}
                     case YRVCTransitionSwipeDir_Top2Bottom:
                     case YRVCTransitionSwipeDir_Bottom2Top:{
-                        fraction = fabsf(translation.y/YRVC_TRANSITION_TOTAL_DISTANCE);
+                        fraction = fabs(translation.y/YRVC_TRANSITION_TOTAL_DISTANCE);
                         break;}
                     default:
                         break;

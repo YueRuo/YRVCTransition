@@ -10,61 +10,57 @@
 
 @implementation YRVCTransitionMoveIn
 
--(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromView:(UIView *)fromView toView:(UIView *)toView{
+-(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromView:(UIView *)fromView toView:(UIView *)toView initialFrame:(CGRect)initialFrame finalFrame:(CGRect)finalFrame{
     UIView *containerView = [transitionContext containerView];
+    fromView.frame = initialFrame;
+    toView.frame = finalFrame;
     
-    CGRect frame = containerView.bounds;
-    CGRect parallaxFrame = frame;
+    CGPoint fromViewCenter = fromView.center;
+    CGPoint toViewCenter = toView.center;
+    CGPoint parallaxCenter = self.reverse?toViewCenter:fromViewCenter;
+    CGPoint startCenter = self.reverse?fromViewCenter:toViewCenter;
     
     switch (self.direction) {
         case YRVCTransitionDirection_FromTop:{
-            frame = ({
-                frame.origin.y = -frame.size.height;
-                frame;});
+            startCenter.y = startCenter.y-containerView.frame.size.height;
             break;}
         case YRVCTransitionDirection_FromLeft:{
-            frame = ({
-                frame.origin.x = -frame.size.width;
-                frame;});
+            startCenter.x = startCenter.x-containerView.frame.size.width;
             break;}
         case YRVCTransitionDirection_FromBottom:{
-            frame = ({
-                frame.origin.y = frame.size.height;
-                frame;});
+            startCenter.y = startCenter.y+containerView.frame.size.height;
             break;}
         case YRVCTransitionDirection_FromRight:{
-            frame = ({
-                frame.origin.x = frame.size.width;
-                frame;});
+            startCenter.x = startCenter.x+containerView.frame.size.width;
             break;}
         default:
             break;
     }
     self.parallaxRatio = fminf(1.0, fmaxf(self.parallaxRatio, 0.0));
 
-    parallaxFrame = ({
-        parallaxFrame.origin.x = -frame.origin.x*self.parallaxRatio;
-        parallaxFrame.origin.y = -frame.origin.y*self.parallaxRatio;
-        parallaxFrame;});
     if (self.reverse) {
-        fromView.frame = containerView.bounds;
-        toView.frame = parallaxFrame;
+        parallaxCenter.x = (fromViewCenter.x-startCenter.x)*self.parallaxRatio+toViewCenter.x;
+        parallaxCenter.y = (fromViewCenter.y-startCenter.y)*self.parallaxRatio+toViewCenter.y;
+        toView.center = parallaxCenter;
         [containerView insertSubview:toView belowSubview:fromView];
     }else{
-        toView.frame = frame;
+        parallaxCenter.x = (toViewCenter.x-startCenter.x)*self.parallaxRatio+fromViewCenter.x;
+        parallaxCenter.y = (toViewCenter.y-startCenter.y)*self.parallaxRatio+fromViewCenter.y;
+        toView.center = startCenter;
         [containerView addSubview:toView];
     }
-    
+
     [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
         if (self.reverse) {
-            fromView.frame = frame;
+            fromView.center = startCenter;
+            toView.center = toViewCenter;
         }else{
-            fromView.frame = parallaxFrame;
+            fromView.center = parallaxCenter;
+            toView.center = toViewCenter;
         }
-        toView.frame = containerView.bounds;
     } completion:^(BOOL finished) {
-        fromView.frame = containerView.bounds;
-        toView.frame = containerView.bounds;
+        fromView.frame = initialFrame;
+        toView.frame = finalFrame;
         if ([transitionContext transitionWasCancelled]) {
             [toView removeFromSuperview];
         }else{
