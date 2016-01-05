@@ -11,10 +11,17 @@
 #import "YRPercentDrivenInteractiveTransition.h"
 
 
+/*!
+ *	@brief	iOS7之后的高级交互式切换动画
+ *
+ */
 @interface UIViewController (YRVCTransition)<UIViewControllerTransitioningDelegate>
 
-@property (retain,nonatomic) YRVCTransition *transition;//animation
-@property (assign,nonatomic) YRVCTransitionSwipeDir swipeDir;//the back gesture dir
-@property (assign,nonatomic) BOOL enableBackGesture;//gesture enable , default is YES
+@property (retain,nonatomic) YRPercentDrivenInteractiveTransition *interactiveYRTransition NS_AVAILABLE_IOS(7_0);//gesture
+@property (retain,nonatomic) YRVCTransition *transition NS_AVAILABLE_IOS(7_0);//animation
+@property (assign,nonatomic) YRVCTransitionSwipeDir swipeDir NS_AVAILABLE_IOS(7_0);//the back gesture dir
+
+
+@property (assign,nonatomic) BOOL enableBackGesture NS_AVAILABLE_IOS(7_0);//gesture enable , default is YES
 
 @end

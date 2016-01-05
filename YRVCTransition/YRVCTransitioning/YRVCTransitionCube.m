@@ -13,7 +13,7 @@
 
 
 @implementation YRVCTransitionCube
--(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromView:(UIView *)fromView toView:(UIView *)toView{
+-(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromView:(UIView *)fromView toView:(UIView *)toView initialFrame:(CGRect)initialFrame finalFrame:(CGRect)finalFrame{
     int dir = self.reverse?1:-1;
     
     CATransform3D viewFromTransform;
