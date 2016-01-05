@@ -11,7 +11,7 @@
 
 #define YRVC_TRANSITION_TOTAL_DISTANCE 300.0
 
-@interface YRPercentDrivenInteractiveTransition ()
+@interface YRPercentDrivenInteractiveTransition ()<UIGestureRecognizerDelegate>
 @property (retain,nonatomic) UIPanGestureRecognizer *gesture;
 @property (weak,nonatomic) UIViewController *viewController;
 @property (weak,nonatomic) UIViewController *transitionSourceVC;//动画所在的VC
@@ -62,8 +62,26 @@
 -(UIPanGestureRecognizer *)gesture{
     if (!_gesture) {
         _gesture = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handleGesture:)];
+        _gesture.delegate = self;
     }
     return _gesture;
+}
+
+-(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    if (gestureRecognizer==_gesture&&_viewController.enableBackGesture) {
+        switch (_style) {
+            case YRTransitonStyle_Navi:
+                if(_viewController.navigationController.viewControllers.count>1){
+                    return true;
+                }
+                break;
+            default:
+                [_viewController.view addGestureRecognizer:self.gesture];
+                return true;
+                break;
+        }
+    }
+    return false;
 }
 
 -(void)handleGesture:(UIPanGestureRecognizer*)gesture{
@@ -109,11 +127,11 @@
                 switch (self.swipeDir) {
                     case YRVCTransitionSwipeDir_Left2Right:
                     case YRVCTransitionSwipeDir_Right2Left:{
-                        fraction = fabsf(translation.x/YRVC_TRANSITION_TOTAL_DISTANCE);
+                        fraction = fabs(translation.x/YRVC_TRANSITION_TOTAL_DISTANCE);
                         break;}
                     case YRVCTransitionSwipeDir_Top2Bottom:
                     case YRVCTransitionSwipeDir_Bottom2Top:{
-                        fraction = fabsf(translation.y/YRVC_TRANSITION_TOTAL_DISTANCE);
+                        fraction = fabs(translation.y/YRVC_TRANSITION_TOTAL_DISTANCE);
                         break;}
                     default:
                         break;
