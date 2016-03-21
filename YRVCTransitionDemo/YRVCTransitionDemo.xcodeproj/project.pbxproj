@@ -30,6 +30,8 @@
 		5F52202719E91C6B00FA9968 /* YRVCTransitionCube.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F52202019E91C6B00FA9968 /* YRVCTransitionCube.m */; };
 		5F52202819E91C6B00FA9968 /* YRVCTransitionMoveIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F52202219E91C6B00FA9968 /* YRVCTransitionMoveIn.m */; };
 		5F52202B19E91C9900FA9968 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F52202A19E91C9900FA9968 /* ViewController.m */; };
+		AA2861671C9F9FAA00502F23 /* YRVCTransitionBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2861661C9F9FAA00502F23 /* YRVCTransitionBubble.m */; };
+		AA2861691C9FA08100502F23 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA2861681C9FA08100502F23 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,9 @@
 		5F52202219E91C6B00FA9968 /* YRVCTransitionMoveIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRVCTransitionMoveIn.m; sourceTree = "<group>"; };
 		5F52202919E91C9900FA9968 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5F52202A19E91C9900FA9968 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AA2861651C9F9FAA00502F23 /* YRVCTransitionBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRVCTransitionBubble.h; sourceTree = "<group>"; };
+		AA2861661C9F9FAA00502F23 /* YRVCTransitionBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRVCTransitionBubble.m; sourceTree = "<group>"; };
+		AA2861681C9FA08100502F23 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +167,7 @@
 				5F521FEF19E91BD000FA9968 /* InfoPlist.strings */,
 				5F521FF219E91BD000FA9968 /* main.m */,
 				5F521FF419E91BD000FA9968 /* YRVCTransitionDemo-Prefix.pch */,
+				AA2861681C9FA08100502F23 /* Launch Screen.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -208,6 +214,8 @@
 				5F52202019E91C6B00FA9968 /* YRVCTransitionCube.m */,
 				5F52202119E91C6B00FA9968 /* YRVCTransitionMoveIn.h */,
 				5F52202219E91C6B00FA9968 /* YRVCTransitionMoveIn.m */,
+				AA2861651C9F9FAA00502F23 /* YRVCTransitionBubble.h */,
+				AA2861661C9F9FAA00502F23 /* YRVCTransitionBubble.m */,
 			);
 			path = YRVCTransitioning;
 			sourceTree = "<group>";
@@ -290,6 +298,7 @@
 				5F521FF119E91BD000FA9968 /* InfoPlist.strings in Resources */,
 				5F0942AC19ECCEEE00966CCE /* SettingViewController.xib in Resources */,
 				5F521FF919E91BD000FA9968 /* Images.xcassets in Resources */,
+				AA2861691C9FA08100502F23 /* Launch Screen.storyboard in Resources */,
 				5F0942B119ECD3E800966CCE /* DemoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +322,7 @@
 				5F52202B19E91C9900FA9968 /* ViewController.m in Sources */,
 				5F521FF719E91BD000FA9968 /* AppDelegate.m in Sources */,
 				5F52202519E91C6B00FA9968 /* YRPercentDrivenInteractiveTransition.m in Sources */,
+				AA2861671C9F9FAA00502F23 /* YRVCTransitionBubble.m in Sources */,
 				5F52202419E91C6B00FA9968 /* UIViewController+YRVCTransition.m in Sources */,
 				5F52202719E91C6B00FA9968 /* YRVCTransitionCube.m in Sources */,
 				5F52202319E91C6B00FA9968 /* UINavigationController+YRVCTransition.m in Sources */,

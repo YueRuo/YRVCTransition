@@ -28,10 +28,10 @@
     
     CGRect rect = self.bubbleRect;
     if (CGRectEqualToRect(rect, CGRectZero)) {
-        rect = CGRectMake(100+containerView.frame.size.width/2, containerView.frame.size.height/2, 10, 10);
+        rect = CGRectMake(containerView.frame.size.width/2, containerView.frame.size.height/2, 10, 10);
     }
-    CGFloat radiusX = MAX(rect.origin.x, toView.frame.size.width-rect.origin.x);
-    CGFloat radiusY = MAX(rect.origin.y, toView.frame.size.height-rect.origin.y);
+    CGFloat radiusX = MAX(rect.origin.x, finalFrame.size.width-rect.origin.x);
+    CGFloat radiusY = MAX(rect.origin.y, finalFrame.size.height-rect.origin.y);
     CGFloat radius = sqrt(pow(radiusX,2)+pow(radiusY,2));
     UIBezierPath *fullPath = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(rect, -radius, -radius)];
     UIBezierPath *bubblePath = [UIBezierPath bezierPathWithOvalInRect:rect];

@@ -12,6 +12,7 @@
 #import "UINavigationController+YRVCTransition.h"
 #import "YRVCTransitionMoveIn.h"
 #import "YRVCTransitionCube.h"
+#import "YRVCTransitionBubble.h"
 
 static SettingViewController *settingVC;
 @interface DemoViewController (){
@@ -76,6 +77,9 @@ static SettingViewController *settingVC;
             break;
         case 1:
             transition=[YRVCTransitionMoveIn new];
+            break;
+        case 2:
+            transition=[YRVCTransitionBubble new];
             break;
         default:
             break;

@@ -27,7 +27,8 @@
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     CGRect initialFrame = [transitionContext initialFrameForViewController:fromVC];
     CGRect finalFrame = [transitionContext finalFrameForViewController:toVC];
-
+    
+    toVC.view.frame = finalFrame;
     [self animateTransition:transitionContext fromView:fromVC.view toView:toVC.view initialFrame:initialFrame finalFrame:finalFrame];
 }
 
