@@ -125,13 +125,17 @@
             if (self.inProgress) {
                 CGFloat fraction = 0;
                 switch (self.swipeDir) {
-                    case YRVCTransitionSwipeDir_Left2Right:
-                    case YRVCTransitionSwipeDir_Right2Left:{
-                        fraction = fabs(translation.x/YRVC_TRANSITION_TOTAL_DISTANCE);
+                    case YRVCTransitionSwipeDir_Left2Right:{
+                        fraction = translation.x/YRVC_TRANSITION_TOTAL_DISTANCE;
                         break;}
-                    case YRVCTransitionSwipeDir_Top2Bottom:
+                    case YRVCTransitionSwipeDir_Right2Left:{
+                        fraction = -translation.x/YRVC_TRANSITION_TOTAL_DISTANCE;
+                        break;}
+                    case YRVCTransitionSwipeDir_Top2Bottom:{
+                        fraction = translation.y/YRVC_TRANSITION_TOTAL_DISTANCE;
+                        break;}
                     case YRVCTransitionSwipeDir_Bottom2Top:{
-                        fraction = fabs(translation.y/YRVC_TRANSITION_TOTAL_DISTANCE);
+                        fraction = -translation.y/YRVC_TRANSITION_TOTAL_DISTANCE;
                         break;}
                     default:
                         break;
@@ -148,6 +152,7 @@
             if (self.inProgress) {
                 self.inProgress = false;
                 if (self.percentComplete<0.4|| gesture.state == UIGestureRecognizerStateCancelled) {
+                    [_transitionSourceVC.transition animationWillCancel];
                     [self cancelInteractiveTransition];
                     //由于回退，动画反转也要转换回来
                     _transitionSourceVC.transition.reverse = !_transitionSourceVC.transition.reverse;

@@ -33,4 +33,6 @@
 
 -(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromView:(UIView *)fromView toView:(UIView *)toView initialFrame:(CGRect)initialFrame finalFrame:(CGRect)finalFrame{
 }
+-(void)animationWillCancel{
+}
 @end

@@ -23,4 +23,5 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface YRVCTransition : NSObject<UIViewControlle
 
 -(void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext fromView:(UIView*)fromView toView:(UIView*)toView initialFrame:(CGRect)initialFrame finalFrame:(CGRect)finalFrame;
 
+-(void)animationWillCancel;
 @end
