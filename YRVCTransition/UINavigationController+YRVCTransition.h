@@ -14,7 +14,7 @@
  *	@brief	iOS7之后的高级交互式切换动画
  *
  */
-@interface UINavigationController (YRVCTransition)<UINavigationControllerDelegate>
+@interface UINavigationController (YRVCTransition)<YRPercentDrivenInteractiveTransitionDelegate>
 
 @property (retain,nonatomic) YRPercentDrivenInteractiveTransition *interactiveYRTransition  NS_AVAILABLE_IOS(7_0);//gesture
 

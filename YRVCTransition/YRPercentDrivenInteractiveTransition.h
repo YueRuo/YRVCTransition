@@ -24,11 +24,19 @@ typedef NS_ENUM(NSUInteger, YRVCTransitionSwipeDir) {
     YRVCTransitionSwipeDir_Right2Left,
 };
 
+@protocol YRPercentDrivenInteractiveTransitionDelegate;
+
 @interface YRPercentDrivenInteractiveTransition : UIPercentDrivenInteractiveTransition
 @property (assign,nonatomic) BOOL inProgress;
 @property (assign,nonatomic) YRVCTransitionSwipeDir swipeDir;
 @property (assign,nonatomic) BOOL enable;
+@property (weak,nonatomic) id<YRPercentDrivenInteractiveTransitionDelegate> delegate;
 
 -(void)addTransitionToViewController:(UIViewController*)viewController transitionSourceVC:(UIViewController*)sourceVC style:(YRTransitonStyle)style;
 
+@end
+
+@protocol YRPercentDrivenInteractiveTransitionDelegate <NSObject>
+@optional
+- (void)cancelInteractiveTransitionInViewController:(UIViewController*)viewController;
 @end

@@ -55,6 +55,7 @@ static const char *assoKeyDelegate = "assoKeyDelegate";
     }
     self.delegate = delegate;
     self.interactiveYRTransition = [YRPercentDrivenInteractiveTransition new];
+    self.interactiveYRTransition.delegate = self;
 }
 
 -(void)pushViewController:(UIViewController *)viewController withYRVCTransition:(YRVCTransition*)transition{

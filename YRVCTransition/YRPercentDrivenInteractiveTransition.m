@@ -156,6 +156,9 @@
                     [self cancelInteractiveTransition];
                     //由于回退，动画反转也要转换回来
                     _transitionSourceVC.transition.reverse = !_transitionSourceVC.transition.reverse;
+                    if ([self.delegate respondsToSelector:@selector(cancelInteractiveTransitionInViewController:)]) {
+                        [self.delegate cancelInteractiveTransitionInViewController:_transitionSourceVC];
+                    }
                 }else{
                     [self finishInteractiveTransition];
                 }
