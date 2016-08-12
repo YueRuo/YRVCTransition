@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "YRVCTransition"
-  s.version          = "1.0.1"
+  s.version          = "1.0.3"
   s.summary          = "Help to use the viewController transition iOS7 later."
 
 # This description is used to generate tags and improve search results.
