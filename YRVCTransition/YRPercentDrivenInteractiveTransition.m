@@ -68,7 +68,7 @@
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    if (gestureRecognizer==_gesture&&_viewController.enableBackGesture) {
+    if (gestureRecognizer == _gesture && _viewController.enableBackGesture) {
         switch (_style) {
             case YRTransitonStyle_Navi:
                 if(_viewController.navigationController.viewControllers.count>1){
@@ -93,16 +93,16 @@
             BOOL shouldStart=false;
             switch (self.swipeDir) {
                 case YRVCTransitionSwipeDir_Left2Right:{
-                    shouldStart = vel.x>0;
+                    shouldStart = vel.x >= 0;
                     break;}
                 case YRVCTransitionSwipeDir_Right2Left:{
-                    shouldStart = vel.x<0;
+                    shouldStart = vel.x <= 0;
                     break;}
                 case YRVCTransitionSwipeDir_Top2Bottom:{
-                    shouldStart = vel.y>0;
+                    shouldStart = vel.y >= 0;
                     break;}
                 case YRVCTransitionSwipeDir_Bottom2Top:{
-                    shouldStart = vel.y<0;
+                    shouldStart = vel.y <= 0;
                     break;}
                 default:
                     break;
@@ -126,22 +126,22 @@
                 CGFloat fraction = 0;
                 switch (self.swipeDir) {
                     case YRVCTransitionSwipeDir_Left2Right:{
-                        fraction = translation.x/YRVC_TRANSITION_TOTAL_DISTANCE;
+                        fraction = translation.x / YRVC_TRANSITION_TOTAL_DISTANCE;
                         break;}
                     case YRVCTransitionSwipeDir_Right2Left:{
-                        fraction = -translation.x/YRVC_TRANSITION_TOTAL_DISTANCE;
+                        fraction = -translation.x / YRVC_TRANSITION_TOTAL_DISTANCE;
                         break;}
                     case YRVCTransitionSwipeDir_Top2Bottom:{
-                        fraction = translation.y/YRVC_TRANSITION_TOTAL_DISTANCE;
+                        fraction = translation.y / YRVC_TRANSITION_TOTAL_DISTANCE;
                         break;}
                     case YRVCTransitionSwipeDir_Bottom2Top:{
-                        fraction = -translation.y/YRVC_TRANSITION_TOTAL_DISTANCE;
+                        fraction = -translation.y / YRVC_TRANSITION_TOTAL_DISTANCE;
                         break;}
                     default:
                         break;
                 }
                 fraction = fminf(fmaxf(fraction, 0.0), 1.0);
-                if (fraction>=1.0) {
+                if (fraction >= 1.0) {
                     fraction = 0.99;
                 }
                 [self updateInteractiveTransition:fraction];
@@ -151,7 +151,7 @@
         case UIGestureRecognizerStateEnded:{
             if (self.inProgress) {
                 self.inProgress = false;
-                if (self.percentComplete<0.4|| gesture.state == UIGestureRecognizerStateCancelled) {
+                if (self.percentComplete < 0.4 || gesture.state == UIGestureRecognizerStateCancelled) {
                     [_transitionSourceVC.transition animationWillCancel];
                     [self cancelInteractiveTransition];
                     //由于回退，动画反转也要转换回来
